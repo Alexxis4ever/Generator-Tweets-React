@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo de la pagina */
+
+body {
+  background: url(./Images/noche-estrellas.jpg);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh; 
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Estilos para el header de mi pagina */
+
+.headerHome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7rem;
+  background-color: transparent;
+}
+
+
+.mainContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 85vh;
+}
+
+.containerTweet{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  color: white;
+  background-color: #1c1c1d;
+  height: 40rem;
+  width: 30rem;
+  border-radius: 18px;
+  border: 3px solid rgb(161, 117, 22);
+}
+
+hr {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.containText{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #17097c;
+  border: 1px solid white;
+  margin: 0.5rem;
+  resize: none;
+  color: white;
+}
+
+
+.info{
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.4em;
+  line-height: 1.1;
+  color: #000981;
+  text-shadow: 0 0 15px #ffff00;
+}
+
+.containerBtns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+
+}
+
+.btns-action{
+  margin: 1.5rem;
+  width: 6rem;
+  height: 3.7rem;
+  border-radius: 15px;
+  font-weight: bold;
+  background-color: rgb(0, 187, 255);
+  cursor: pointer;
+}
+
+.tweets{
+  margin: 1rem;
+  font-size: 1.1rem;
+}
+
+
+h2{
+  color: #ffff00;
+  margin-top: 1.5rem;
+}
+
+ul{
+  margin-top: 1rem;
+}
+
+li{
+  font-size: 1.5rem;
+  color: white;
+  z-index: 5;
+}
