@@ -45,7 +45,7 @@ body {
   flex-direction: column;
   color: white;
   background-color: #1c1c1d;
-  height: 40rem;
+  height: 42rem;
   width: 30rem;
   border-radius: 18px;
   border: 3px solid rgb(161, 117, 22);
@@ -79,7 +79,7 @@ hr {
 h1 {
   font-size: 3.4em;
   line-height: 1.1;
-  color: #0a3353;
+  color: #0c669f;
   font-weight: bold;
   text-shadow: 0 0 15px #ffffff;
 }
@@ -88,8 +88,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
-
+  margin-top: 0.2rem;
 }
 
 .btns-action{
@@ -105,6 +104,9 @@ h1 {
 .tweets{
   margin: 1rem;
   font-size: 1.1rem;
+  word-break: break-all;
+  overflow-y: auto;
+  margin-bottom: 2rem;
 }
 
 
@@ -122,3 +124,19 @@ li{
   color: white;
   z-index: 5;
 }
+
+.quantity{
+  text-align: right;
+  margin-right: 3.5rem;
+  color: #ffff00;
+}
+
+
+
+
+
+
+
+
+
+
