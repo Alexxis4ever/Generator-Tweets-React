@@ -5,30 +5,53 @@ export const ContainerTweet = () => {
 
   const [text, setText] = useState('');
   const [assignedText, setAssignedText] = useState('Aquí verás tu tweet actual');
-  
+
   const [valueQ, setValue] = useState(0)
   const maxLength = 255
+
+  const [array, setArray] = useState([])
 
 
   const handleTextAreaChange = (e) =>{
     const value = e.target.value;
-    
+
     if (value.length <= maxLength) {
       setText(value);
       setValue(value.length)
     }
-      
+
   }
 
   const handleAssignClick  = () =>{
     setAssignedText(text);
     setText('');
-    setValue(valueQ = 0)
+    setValue(0)
   }
+
+  const arrays = []
 
   const handleAssignClick2 = () =>{
-
+    let save = assignedText
+    arrays.push(save)
+    // localStorage.setItem("dates", arrays)
   }
+
+const mostrar = () =>{
+
+  // let a = localStorage.getItem("dates")
+
+
+  let iterator = 0
+
+  arrays.map(item =>{
+    <p>{iterator + item}</p>
+    iterator++;
+    console.log(iterator + item);
+  })
+
+
+
+}
 
 
   return (
@@ -39,7 +62,7 @@ export const ContainerTweet = () => {
         <div className='containerBtns'>
           <ButtonUI event={handleAssignClick } style="btns-action" textButton="Publicar" />
           <ButtonUI event={handleAssignClick2} style="btns-action" textButton="Archivar" />
-          <ButtonUI event={() => {console.log("hola")}} style="btns-action" textButton="Mostrar Archivados" />
+          <ButtonUI event={mostrar} style="btns-action" textButton="Mostrar Archivados" />
         </div>
         <p className='quantity'>{valueQ}</p>
         <p className='tweets' >{assignedText}</p>
