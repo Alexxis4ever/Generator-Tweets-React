@@ -79,8 +79,9 @@ hr {
 h1 {
   font-size: 3.4em;
   line-height: 1.1;
-  color: #000981;
-  text-shadow: 0 0 15px #ffff00;
+  color: #0a3353;
+  font-weight: bold;
+  text-shadow: 0 0 15px #ffffff;
 }
 
 .containerBtns{
