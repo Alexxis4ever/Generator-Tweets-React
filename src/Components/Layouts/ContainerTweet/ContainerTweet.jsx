@@ -7,7 +7,7 @@ export const ContainerTweet = () => {
   const [assignedText, setAssignedText] = useState('Aquí verás tu tweet actual');
   
   const [valueQ, setValue] = useState(0)
-  const maxLength = 254
+  const maxLength = 255
 
 
   const handleTextAreaChange = (e) =>{
@@ -15,14 +15,15 @@ export const ContainerTweet = () => {
     
     if (value.length <= maxLength) {
       setText(value);
-    }
       setValue(value.length)
+    }
+      
   }
 
   const handleAssignClick  = () =>{
     setAssignedText(text);
     setText('');
-    setValue(0)
+    setValue(valueQ = 0)
   }
 
   const handleAssignClick2 = () =>{
