@@ -44,8 +44,8 @@ body {
   text-align: center;
   flex-direction: column;
   color: white;
-  background-color: #1c1c1d;
-  height: 42rem;
+  background-color: #1e1d3d;
+  height: 43rem;
   width: 30rem;
   border-radius: 18px;
   border: 3px solid rgb(161, 117, 22);
@@ -64,7 +64,7 @@ hr {
   font-size: 1.2rem;
   padding: 1rem;
   border-radius: 12px;
-  background-color: #17097c;
+  background-color: #0b0a2a;
   border: 1px solid white;
   margin: 0.5rem;
   resize: none;
@@ -74,6 +74,7 @@ hr {
 
 .info{
   margin-bottom: 1rem;
+  margin-top: 3rem;
 }
 
 h1 {
@@ -105,8 +106,20 @@ h1 {
   margin: 1rem;
   font-size: 1.1rem;
   word-break: break-all;
+}
+
+
+.padre{
+  background-color: #1c2938;
+  border-radius: 18px;
+  border: 2px solid rgb(202, 151, 13);
+  height: 220px;
+  margin: 0;
+  padding: 0 1rem;
+  width: 400px;
+  margin: 2rem auto;
   overflow-y: auto;
-  margin-bottom: 2rem;
+  text-align: center;
 }
 
 
@@ -117,6 +130,7 @@ h2{
 
 ul{
   margin-top: 1rem;
+  overflow-y: scroll;
 }
 
 li{
@@ -132,6 +146,14 @@ li{
 }
 
 
+.tweets::-webkit-scrollbar {
+  width: 7px;
+}
+
+.tweets::-webkit-scrollbar-thumb{
+  background-color: #ffff00;
+  border-radius: 5px;
+}
 
 
 
