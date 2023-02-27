@@ -23,34 +23,38 @@ export const ContainerTweet = () => {
 
   // Función para el boton de Publicar
   const postButton = () => {
-
     if (text == '') {
-      alert("Esta vacio")
-    } else{
+      setAssignedText("No has ingresado nada")
+    } else {
       setAssignedText(text);
       setText('');
       setValue(0)
     }
+
   }
 
   // Hacemos uso del useState y lo establecemos 
   // con el estado inicial de un arreglo
   const [tweet, setTweet] = useState([]);
 
+  let array = []
+
   // Función para el boton de Archivar
   const archiveButton = () => {
     let save = assignedText
-    localStorage.setItem("dates", save)
+    array.push(save)
+    localStorage.setItem("dates", array)
   }
 
   // Función para el boton de MostrarArchivados
   const showFiles = () => {
-    if (tweet == '') {
-      alert("Esta vacio")
+    if (text=='') {
+      setAssignedText("No hay tweets para mostrar")
     } else {
-      let local = localStorage.getItem("dates")
+      const local = localStorage.getItem("dates")
       setTweet([...tweet, local])
     }
+
   }
 
   // Utilizo useEffect para visualizar en consola
@@ -82,6 +86,7 @@ export const ContainerTweet = () => {
       </div>
 
       <div className='listContainer'>
+
         {
           tweet.map((item, index) => <ListaTweets key={index} text={item} />)
         }
