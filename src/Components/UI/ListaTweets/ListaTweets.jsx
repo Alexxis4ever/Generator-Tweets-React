@@ -1,11 +1,8 @@
-import React from 'react'
 
-export const ListaTweets = () => {
+export const ListaTweets = ({ text }) => {
   return (
-        <ul>
-            <li>Tweet 1</li>
-            <li>Tweet 2</li>
-            <li>Tweet 3</li>
-        </ul>
+    <ul>
+      <li>{text}</li>
+    </ul>
   )
 }

@@ -6,8 +6,7 @@
   box-sizing: border-box;
 }
 
-/* Estilos para el cuerpo de la pagina */
-
+/* Estilos para el cuerpo de la página */
 body {
   background: url(./Images/noche-estrellas.jpg);
   background-size: cover;
@@ -17,8 +16,7 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
-/* Estilos para el header de mi pagina */
-
+/* Estilos para el header */
 .headerHome{
   display: flex;
   justify-content: center;
@@ -27,7 +25,7 @@ body {
   background-color: transparent;
 }
 
-
+/* Estilos para el contenido principal del cuerpo de la página */
 .mainContent{
   display: flex;
   justify-content: center;
@@ -38,7 +36,8 @@ body {
   height: 85vh;
 }
 
-.containerTweet{
+/* Estilos para el contenedor padre */
+.generalContainer{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -51,12 +50,14 @@ body {
   border: 3px solid rgb(161, 117, 22);
 }
 
+/* Estilos para la linea horizontal */
 hr {
   margin-right: 2rem;
   margin-left: 2rem;
   margin-bottom: 0.5rem;
 }
 
+/* Estilos para el textarea */
 .containText{
   display: flex;
   justify-content: center;
@@ -71,20 +72,23 @@ hr {
   color: white;
 }
 
-
+/* Estilos para la info - Publica tu tweet */
 .info{
   margin-bottom: 1rem;
   margin-top: 3rem;
+  color: #ffff00;
 }
 
+/* Estilos para el titulo principal */
 h1 {
   font-size: 3.4em;
   line-height: 1.1;
-  color: #0c669f;
+  color: #ffff00ce;
   font-weight: bold;
-  text-shadow: 0 0 15px #ffffff;
+  text-shadow: 0 0 15px #0e89ca;
 }
 
+/* Estilos para el contenedor de los botones */
 .containerBtns{
   display: flex;
   justify-content: center;
@@ -92,6 +96,7 @@ h1 {
   margin-top: 0.2rem;
 }
 
+/* Estilos para los botones */
 .btns-action{
   margin: 1.5rem;
   width: 6rem;
@@ -102,17 +107,11 @@ h1 {
   cursor: pointer;
 }
 
-.tweets{
-  margin: 1rem;
-  font-size: 1.1rem;
-  word-break: break-all;
-}
-
-
-.padre{
+/* Estilos para el contenedor de mis tweets */
+.tweetsContainer{
   background-color: #1c2938;
-  border-radius: 18px;
-  border: 2px solid rgb(202, 151, 13);
+  border-radius: 9px;
+  border: 3px solid rgb(202, 151, 13);
   height: 220px;
   margin: 0;
   padding: 0 1rem;
@@ -122,43 +121,48 @@ h1 {
   text-align: center;
 }
 
-
-h2{
-  color: #ffff00;
-  margin-top: 1.5rem;
+/* Estilos para los tweets */
+.tweets{
+  margin: 1rem;
+  font-size: 1.1rem;
+  word-break: break-all;
 }
 
-ul{
-  margin-top: 1rem;
+/* Estilos para el contenedor de las listas */
+.listContainer{
+  margin-top: 2rem;
+  height: 4rem;
   overflow-y: scroll;
+  width: 20vw;
 }
 
+/* Estilos para las listas */
 li{
   font-size: 1.5rem;
   color: white;
-  z-index: 5;
 }
 
+/* Estilos para el scroll del contenedor de las listas */
+.listContainer::-webkit-scrollbar{
+  width: 0.8rem;
+} 
+.listContainer::-webkit-scrollbar-thumb{
+  background-color: #ffff00;
+  border-radius: 5px;
+}
+
+/* Estilos para el contador de caracteres */
 .quantity{
   text-align: right;
   margin-right: 3.5rem;
   color: #ffff00;
 }
 
-
-.tweets::-webkit-scrollbar {
-  width: 7px;
+/* Estilos para el scroll de los tweets */
+.tweetsContainer::-webkit-scrollbar {
+  width: 6px;
 }
-
-.tweets::-webkit-scrollbar-thumb{
-  background-color: #ffff00;
-  border-radius: 5px;
+.tweetsContainer::-webkit-scrollbar-thumb{
+  background-color: #fdf7f7;
+  border-radius: 18px;
 }
-
-
-
-
-
-
-
-

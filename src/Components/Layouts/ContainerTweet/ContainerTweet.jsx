@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ButtonUI } from '../../UI/ButtonUI/ButtonUI'
+import { ListaTweets } from '../../UI/ListaTweets/ListaTweets';
+
 
 export const ContainerTweet = () => {
 
@@ -9,8 +11,8 @@ export const ContainerTweet = () => {
   const [valueQ, setValue] = useState(0)
   const maxLength = 255
 
-
-  const handleTextAreaChange = (e) =>{
+  // Función para manipular datos del textarea
+  const textAreaManagement = (e) => {
     const value = e.target.value
 
     if (value.length <= maxLength) {
@@ -19,22 +21,36 @@ export const ContainerTweet = () => {
     }
   }
 
-  const handleAssignClick  = () =>{
-    setAssignedText(text);
-    setText('');
-    setValue(0)
+  // Función para el boton de Publicar
+  const postButton = () => {
+
+    if (text == '') {
+      alert("Esta vacio")
+    } else{
+      setAssignedText(text);
+      setText('');
+      setValue(0)
+    }
   }
 
+  // Hacemos uso del useState y lo establecemos 
+  // con el estado inicial de un arreglo
   const [tweet, setTweet] = useState([]);
 
-  const archivar = () =>{
+  // Función para el boton de Archivar
+  const archiveButton = () => {
     let save = assignedText
     localStorage.setItem("dates", save)
   }
 
-  const showArchives = () =>{
-    let local = localStorage.getItem("dates")
-    setTweet([...tweet, local])
+  // Función para el boton de MostrarArchivados
+  const showFiles = () => {
+    if (tweet == '') {
+      alert("Esta vacio")
+    } else {
+      let local = localStorage.getItem("dates")
+      setTweet([...tweet, local])
+    }
   }
 
   // Utilizo useEffect para visualizar en consola
@@ -44,26 +60,32 @@ export const ContainerTweet = () => {
   //   console.log(tweet);
   // }, [tweet]);
 
-
   return (
     <>
-    <div className='containerTweet'>
+      <div className='generalContainer'>
         <h2 className='info'>Publica tu tweet</h2>
         <hr />
-        <textarea value={text} onChange={handleTextAreaChange} placeholder='Escribe un tweet(max 255 caracteres)' name=""  cols="30" rows="10"  className='containText'></textarea>
+        <textarea className='containText' value={text} onChange={textAreaManagement} placeholder='Escribe un tweet(max 255 caracteres)' cols="30" rows="10"></textarea>
+
         <div className='containerBtns'>
-          <ButtonUI event={handleAssignClick } style="btns-action" textButton="Publicar" />
-          <ButtonUI event={archivar} style="btns-action" textButton="Archivar" />
-          <ButtonUI event={showArchives} style="btns-action" textButton="Mostrar Archivados" />
+          <ButtonUI event={postButton} style="btns-action" textButton="Publicar" />
+          <ButtonUI event={archiveButton} style="btns-action" textButton="Archivar" />
+          <ButtonUI event={showFiles} style="btns-action" textButton="Mostrar Archivados" />
         </div>
+
         <p className='quantity'>{valueQ}</p>
-        <div className='padre'>
-        <p className='tweets' >{assignedText}</p>
+
+        <div className='tweetsContainer'>
+          <p className='tweets' >{assignedText}</p>
         </div>
-    </div>
-      <ul>
-        {tweet.map((tw, index) => <li key={index}>{tw}</li>)}
-      </ul>
+
+      </div>
+
+      <div className='listContainer'>
+        {
+          tweet.map((item, index) => <ListaTweets key={index} text={item} />)
+        }
+      </div>
     </>
   )
 }
