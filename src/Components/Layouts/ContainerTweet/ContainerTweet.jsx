@@ -2,59 +2,54 @@ import { useEffect, useState } from 'react'
 import { ButtonUI } from '../../UI/ButtonUI/ButtonUI'
 import { ListaTweets } from '../../UI/ListaTweets/ListaTweets';
 
+const arrayTweets = []
 
 export const ContainerTweet = () => {
 
   const [text, setText] = useState('');
   const [assignedText, setAssignedText] = useState('Aquí verás tu tweet actual');
 
-  const [valueQ, setValue] = useState(0)
+  const [valueQ, setValue] = useState(255)
   const maxLength = 255
 
-  // Función para manipular datos del textarea
-  const textAreaManagement = (e) => {
-    const value = e.target.value
-
-    if (value.length <= maxLength) {
-      setText(value);
-      setValue(value.length)
-    }
-  }
-
-  // Función para el boton de Publicar
-  const postButton = () => {
-    if (text == '') {
-      setAssignedText("No has ingresado nada")
-    } else {
-      setAssignedText(text);
-      setText('');
-      setValue(0)
-    }
-
-  }
-
+ 
   // Hacemos uso del useState y lo establecemos 
   // con el estado inicial de un arreglo
   const [tweet, setTweet] = useState([]);
 
-  let array = []
+
+  // Función para manipular datos del textarea
+  const textAreaManagement = (e) => {
+    const value = e.target.value
+      setText(value);
+  }
+
+  // Función para el boton de Publicar
+  const postButton = () => {
+      setAssignedText(text);
+      setText('');
+      setValue(0)
+  }
+
 
   // Función para el boton de Archivar
   const archiveButton = () => {
     let save = assignedText
-    array.push(save)
-    localStorage.setItem("dates", array)
+    arrayTweets.push(save)
+    localStorage.setItem("dates", arrayTweets)
   }
 
   // Función para el boton de MostrarArchivados
   const showFiles = () => {
-    if (text=='') {
-      setAssignedText("No hay tweets para mostrar")
-    } else {
-      const local = localStorage.getItem("dates")
-      setTweet([...tweet, local])
-    }
+      const localTweets = localStorage.getItem("dates")
 
+      setTweet([...tweet, localTweets])
+  }
+
+
+  // llamar la funcion
+  const count = () =>{
+    setValue(valueQ - 1)
   }
 
   // Utilizo useEffect para visualizar en consola
@@ -86,7 +81,6 @@ export const ContainerTweet = () => {
       </div>
 
       <div className='listContainer'>
-
         {
           tweet.map((item, index) => <ListaTweets key={index} text={item} />)
         }
