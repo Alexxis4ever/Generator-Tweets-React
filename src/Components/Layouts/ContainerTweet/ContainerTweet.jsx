@@ -8,17 +8,26 @@ export const ContainerTweet = () => {
 
   const refTA = useRef();
 
+  const [cap, captext] = useState('')
+
   const [assignedText, setAssignedText] = useState('Aquí verás tu tweet actual');
   const [tweet, setTweet] = useState([]);
   const [letters, setLetters] = useState(255);
   const [colorLt, setColorLt] = useState('counter');
   
 
+   // Función para el contador
+   const textAreaManagement = (e) => {
+    let value = e.target.value
+    captext(value)
+    setLetters(letters-1); 
+  }
+
   // Función para el boton de Publicar
   const postButton = () => {
     setAssignedText(refTA.current.value)
+    captext('')
   }
-
 
   // Función para el boton de Archivar
   const archiveButton = () => {
@@ -29,14 +38,15 @@ export const ContainerTweet = () => {
   // Función para el boton de MostrarArchivados
   const showFiles = () => {
       const tweetList = localStorage.getItem("tweets");
+      // La cadena de caracteres obtenida del localStorage es dividida 
+      // utilizando el separador de coma (',') y se almacena en la variable 
+      // data. Esto significa que la variable data es ahora un array de 
+      // subcadenas, donde cada subcadena es un tweet almacenado en el 
+      // localStorage.
       const data = tweetList.split(',');
       setTweet(data);
   }
 
-   // Función para manipular datos del textarea
-   const textAreaManagement = () => {
-    setLetters(letters-1);
-}
 
 
   return (
@@ -44,7 +54,7 @@ export const ContainerTweet = () => {
       <div className='generalContainer'>
         <h2 className='info'>Publica tu tweet</h2>
         <hr />
-        <textarea ref={refTA} className='containText' onChange={textAreaManagement} placeholder='Escribe un tweet(max 255 caracteres)' cols="30" rows="10"></textarea>
+        <textarea ref={refTA} value={cap} className='containText' onChange={textAreaManagement} placeholder='Escribe un tweet(max 255 caracteres)' cols="30" rows="10"></textarea>
 
         <div className='containerBtns'>
           <ButtonUI event={postButton} style="btns-action" textButton="Publicar" />
