@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ButtonUI } from '../../UI/ButtonUI/ButtonUI'
 import { ListaTweets } from '../../UI/ListaTweets/ListaTweets';
+import Swal from 'sweetalert2';
 
 let arrayTweets = []
 
@@ -21,6 +22,13 @@ export const ContainerTweet = () => {
     let value = e.target.value
     captext(value)
     setLetters(letters-1); 
+    
+    if (letters<=0 ) {
+      Swal.fire(
+        'Haz completado el límite de caracteres permitidos',                
+      )
+      setLetters(0)
+    }
   }
 
   // Función para el boton de Publicar
@@ -46,6 +54,12 @@ export const ContainerTweet = () => {
       const data = tweetList.split(',');
       setTweet(data);
   }
+
+  useEffect(() => {
+    if (letters <= 50) {
+      setColorLt('counter-min')
+    }
+  }, [letters])
 
 
 
