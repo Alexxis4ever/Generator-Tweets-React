@@ -9,55 +9,67 @@ export const ContainerTweet = () => {
 
   const refTA = useRef();
 
-  const [cap, captext] = useState('')
-
   const [assignedText, setAssignedText] = useState('Aquí verás tu tweet actual');
   const [tweet, setTweet] = useState([]);
   const [letters, setLetters] = useState(255);
   const [colorLt, setColorLt] = useState('counter');
   
-
-   // Función para el contador
-   const textAreaManagement = (e) => {
-    let value = e.target.value
-    captext(value)
-    setLetters(letters-1); 
-    
-    if (letters<=0 ) {
-      Swal.fire(
-        'Haz completado el límite de caracteres permitidos',                
-      )
-      setLetters(0)
+  // Función para el contador
+  const textAreaManagement = (e) => {
+    let value = e.target.value 
+    if (value.length <= 255) {
+      setLetters(255-value.length)
+    } else if (letters>=0) {
+      Swal.fire('has llegado al limite')
+      setLetters(letters = 0)
     }
   }
 
   // Función para el boton de Publicar
   const postButton = () => {
-    setAssignedText(refTA.current.value)
-    captext('')
+    if (refTA.current.value == '') {
+      Swal.fire('El campo esta vacio')
+    } else {
+      setAssignedText(refTA.current.value)
+      arrayTweets.push(refTA.current.value);
+      localStorage.setItem("tweets", arrayTweets)
+    }
+    refTA.current.value = ''
   }
 
   // Función para el boton de Archivar
   const archiveButton = () => {
-    arrayTweets.push(refTA.current.value);
-    localStorage.setItem("tweets", arrayTweets);
+    if (localStorage.getItem("tweets") === null) {
+      Swal.fire('El local esta vacio')
+    } else {
+      arrayTweets.push(refTA.current.value);
+      localStorage.setItem("tweets", arrayTweets)
+    }
   }
+
+
+  // Por medio de la funcion .split(',') toma la cadena de caracteres del
+  // localStorage y la divide una sobre otra, para despues guardarla en la variable
+  // data, siendo la variable data un array de subcadenas, donde cada subcadena es un
+  // tweet almacenado en el localStorage
 
   // Función para el boton de MostrarArchivados
   const showFiles = () => {
-      const tweetList = localStorage.getItem("tweets");
-      // La cadena de caracteres obtenida del localStorage es dividida 
-      // utilizando el separador de coma (',') y se almacena en la variable 
-      // data. Esto significa que la variable data es ahora un array de 
-      // subcadenas, donde cada subcadena es un tweet almacenado en el 
-      // localStorage.
+    const tweetList = localStorage.getItem("tweets");
+    if (localStorage.getItem("tweets") === null) {
+      Swal.fire('El local esta vacio')
+    } else {
       const data = tweetList.split(',');
       setTweet(data);
+    }
   }
 
+
   useEffect(() => {
-    if (letters <= 50) {
+    if (letters <= 125) {
       setColorLt('counter-min')
+    } else{
+      setColorLt('counter')
     }
   }, [letters])
 
@@ -68,7 +80,7 @@ export const ContainerTweet = () => {
       <div className='generalContainer'>
         <h2 className='info'>Publica tu tweet</h2>
         <hr />
-        <textarea ref={refTA} value={cap} className='containText' onChange={textAreaManagement} placeholder='Escribe un tweet(max 255 caracteres)' cols="30" rows="10"></textarea>
+        <textarea ref={refTA} className='containText' onChange={textAreaManagement} placeholder='Escribe un tweet(max 255 caracteres)' cols="30" rows="10"></textarea>
 
         <div className='containerBtns'>
           <ButtonUI event={postButton} style="btns-action" textButton="Publicar" />
